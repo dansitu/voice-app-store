@@ -6,27 +6,44 @@
     <script>
         var gui = require('nw.gui');
 
-        var tray = new gui.Tray({icon: 'mic.png'});
+        var tray = new gui.Tray({icon: 'stop.png'});
 
         var julius;
 
-        tray.on('click', function(
-        
-            // bootstrap JuliusJS
-            // options: http://julius.sourceforge.jp/juliusbook/en/desc_options.html
-            julius = new Julius();
-            console.log('loaded');
-        ));
+        // First, listen for our "hello"
+        function listenForHello() {
 
+            if(julius) julius.terminate();
 
+            julius = new Julius('hello.dfa', 'hello.dict');
 
-        // register listener
-        julius.onrecognition = function(sentence, score) {
-                // ...
-            console.log(score + " " + sentence);
+            julius.onrecognition = function(sentence, score) {
+                console.log('heard hello');
+                listenForCommands();
+            }
+
+            console.log("Listening for hello");
         };
 
-        // https://github.com/rogerwang/node-webkit/wiki/Tray
+        // Second, listen for any commands
+        function listenForCommands() {
+
+            tray.icon = 'mic.png';
+
+            julius.terminate();
+
+            julius = new Julius();
+
+            julius.onrecognition = function(sentence, score) {
+                console.log('heard ' + sentence);
+                listenForHello();
+            }
+            console.log("Listening for commands");
+        
+        }
+
+        listenForHello();
+
     </script>
 </html>
 
