@@ -1,0 +1,7 @@
+{
+    "name": "voice-app-store",
+    "main": "main.html",
+    "window": {
+        "show": false
+    }
+}

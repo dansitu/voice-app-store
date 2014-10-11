@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+    <script src='julius.js'></script>
+
+    <script>
+        var gui = require('nw.gui');
+
+        var tray = new gui.Tray({icon: 'mic.png'});
+
+        var julius;
+
+        tray.on('click', function(
+        
+            // bootstrap JuliusJS
+            // options: http://julius.sourceforge.jp/juliusbook/en/desc_options.html
+            julius = new Julius();
+            console.log('loaded');
+        ));
+
+
+
+        // register listener
+        julius.onrecognition = function(sentence, score) {
+                // ...
+            console.log(score + " " + sentence);
+        };
+
+        // https://github.com/rogerwang/node-webkit/wiki/Tray
+    </script>
+</html>
+

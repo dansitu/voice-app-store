@@ -1,0 +1,20 @@
+{
+  "name": "voice-app-store",
+  "version": "0.0.0",
+  "authors": [
+    "Daniel Imrie-Situnayake <dan.situnayake@hackreactor.com>"
+  ],
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "juliusjs": "~0.0.0-pre"
+  }
+}
