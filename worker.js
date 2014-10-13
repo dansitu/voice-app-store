@@ -67,8 +67,8 @@ master.onmessage = (function() {
 
       if (typeof e.data.pathToDfa === 'string' &&
           typeof e.data.pathToDict === 'string') {
-        FS.createLazyFile('/', 'julius.dfa', e.data.pathToDfa, true, false);
-        FS.createLazyFile('/', 'julius.dict', e.data.pathToDict, true, false);
+        FS.createPreloadedFile('/', 'julius.dfa', e.data.pathToDfa, true, false);
+        FS.createPreloadedFile('/', 'julius.dict', e.data.pathToDict, true, false);
       } else {
         dfa = 'voxforge/sample.dfa';
         dict = 'voxforge/sample.dict';

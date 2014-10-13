@@ -15,11 +15,11 @@
 
             if(julius) julius.terminate();
 
-            julius = new Julius('hello.dfa', 'hello.dict');
+            julius = new Julius('hello.dfa', 'hello.dict', {verbose: true});
 
             julius.onrecognition = function(sentence, score) {
                 console.log('heard hello');
-                listenForCommands();
+                // listenForCommands();
             }
 
             console.log("Listening for hello");
